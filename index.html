@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ATU Student Study Planner</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="app-container">
+    <!-- Header Section -->
+    <header class="app-header">
+      <div class="brand-section">
+        <div class="logo-wrapper">
+          <img src="atu_logo.png" alt="ATU Logo" class="logo-img"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <div class="logo-placeholder" style="display: none;">ATU</div>
+        </div>
+        <div class="brand-titles">
+          <h1>Accra Technical University</h1>
+          <p class="sub-title">Student Study Planner Web Application</p>
+        </div>
+      </div>
+      <div class="header-controls">
+        <button id="theme-toggle-btn" class="icon-btn" aria-label="Toggle dark/light theme" title="Toggle Theme">
+          <span id="theme-icon">🌙</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="main-grid">
+      <!-- Left Column: Task Input & Statistics -->
+      <aside class="sidebar-section">
+        <!-- Task Input Card -->
+        <section class="card input-card">
+          <h2>Add New Study Task</h2>
+          <form id="task-form" novalidate>
+            <div class="form-group">
+              <label for="task-title">Task Title <span class="required">*</span></label>
+              <input type="text" id="task-title" placeholder="e.g., Complete Data Structures Assignment"
+                autocomplete="off">
+              <small id="title-error" class="error-message" style="display: none;">Please enter a task title.</small>
+            </div>
+            <div class="form-group">
+              <label for="task-subject">Subject / Course</label>
+              <select id="task-subject">
+                <option value="Computer Science">Computer Science</option>
+                <option value="Data Structures & Algorithms">Data Structures & Algorithms</option>
+                <option value="Web Development">Web Development</option>
+                <option value="Database Systems">Database Systems</option>
+                <option value="Software Engineering">Software Engineering</option>
+                <option value="Networking & Security">Networking & Security</option>
+                <option value="Mathematics">Mathematics</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="task-time">Due Time (Optional)</label>
+              <input type="time" id="task-time">
+            </div>
+            <button type="submit" id="add-task-btn" class="primary-btn">Add Study Task</button>
+          </form>
+        </section>
+
+        <!-- Statistics & Progress Card -->
+        <section class="card stats-card">
+          <h2>Study Progress</h2>
+          <div class="stats-grid">
+            <div class="stat-box">
+              <span class="stat-number" id="total-tasks">0</span>
+              <span class="stat-label">Total Tasks</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-number" id="completed-tasks">0</span>
+              <span class="stat-label">Completed</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-number" id="pending-tasks">0</span>
+              <span class="stat-label">Pending</span>
+            </div>
+          </div>
+          <div class="progress-container">
+            <div class="progress-info">
+              <span>Completion Rate</span>
+              <span id="progress-percentage">0%</span>
+            </div>
+            <div class="progress-bar-bg">
+              <div id="progress-bar-fill" class="progress-bar-fill" style="width: 0%;"></div>
+            </div>
+          </div>
+        </section>
+      </aside>
+
+      <!-- Right Column: Task Management & Filter Section -->
+      <section class="content-section">
+        <div class="card task-list-card">
+          <div class="task-list-header">
+            <h2>Your Study Tasks</h2>
+            <div class="filter-tabs" role="tablist">
+              <button class="filter-btn active" data-filter="all">All</button>
+              <button class="filter-btn" data-filter="pending">Pending</button>
+              <button class="filter-btn" data-filter="completed">Completed</button>
+            </div>
+          </div>
+
+          <!-- Task List Container -->
+          <div id="task-list" class="task-list">
+            <!-- Dynamically populated tasks -->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>&copy; 2026 Accra Technical University (ATU) — Department of Computer Science. Developed by Korgbetor Jerry.
+      </p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>
